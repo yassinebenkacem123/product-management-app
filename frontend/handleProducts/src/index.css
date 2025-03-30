@@ -1,0 +1,110 @@
+@import 'tailwindcss';
+@plugin 'daisyui';
+
+/* CSS:  */
+.tooltip {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: .9rem;
+    border: 0px solid transparent;
+    background-color: #323033;
+    border-radius: 1.25em;
+    transition: all 0.2s linear;
+   }
+   
+   .tooltip {
+    position: relative;
+    display: inline-block;
+    transition: ease 0.5s;
+   }
+   .tooltip:hover {
+    background-color: rgb(60, 60, 60);
+   }
+  
+   
+   .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 4em;
+    background-color: rgba(0, 0, 0, 0.253);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 25%;
+    left: 110%;
+   }
+   
+   .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent rgba(0, 0, 0, 0.253) transparent transparent;
+   }
+   
+   .tooltip:hover .tooltiptext {
+    visibility: visible;
+   }
+
+/* Edit button :  */
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    padding: 1rem;
+    border: none;
+    background: #9f14ef3d;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background: #a549da62;
+  }
+  
+  .button:hover .svg-icon {
+    animation: lr 1s linear infinite;
+  }
+  
+  @keyframes lr {
+    0% {
+      transform: translateX(0);
+    }
+  
+    25% {
+      transform: translateX(-1px);
+    }
+  
+    75% {
+      transform: translateX(1px);
+    }
+  
+    100% {
+      transform: translateX(0);
+    }
+  }
+  @keyframes slide-in-right {
+    from { transform: translateX(120%); }
+    to { transform: translateX(0); }
+  }
+  
+  @keyframes progress {
+    from { width: 100%; }
+    to { width: 0; }
+  }
+  
+  .animate-slide-in-right {
+    animation: slide-in-right 0.3s ease-out;
+  }
+  
+  .animate-progress {
+    animation: progress 3s linear forwards;
+  }
