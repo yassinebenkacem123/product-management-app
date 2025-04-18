@@ -3,24 +3,37 @@ import { ProductContext } from '../App'
 import { Link } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import Modal from '../components/Modal';
+import { getProduct } from '../server/serverInteract';
 import Toast from '../components/Toast';
+import DoubleCard from '../components/DoubleCard';
 const HomePage = () => {
   const {products,serverMessage} = useContext(ProductContext);
   const [selectedProduct,setSelectedProduct] = useState(null)
   const [toggle,setToggle] = useState(false);
+  const [productData, setProductData] = useState(null);
+  const [showProduct, setShowProduct] = useState(false);
   function getIdProduct(id)
   {
     setSelectedProduct(id);
   }
+  async function handleGetProduct(productId)
+  {
+    const data = await getProduct(productId);
+    setProductData(data);
+  }
   return (
   <>
-      <section className={`flex ${toggle?'opacity-20':'opacity-100'} flex-col w-full h-screen items-center mt-10 gap-2`}>
+      <section className={`flex ${toggle || showProduct ?'opacity-20':'opacity-100'} flex-col w-full h-screen items-center mt-10 gap-2`}>
         <h1 className='text-3xl font-bold text-white'>Current Products 🛒</h1>
         {
           products.length>0?
           <div className='p-2 grid max-lg:grid-cols-2 lg:grid-cols-4 gap-4'>
             {products.map((product,index)=><ProductCard 
+            setProductData={setProductData}
+            handleGetProduct={handleGetProduct}
             toggle={toggle}
+            showProduct={showProduct}
+            setShowProduct={setShowProduct}
             setToggle={setToggle}
             key={index} 
             getIdProduct={getIdProduct}
@@ -44,6 +57,13 @@ const HomePage = () => {
           toggle={toggle}
           setToggle={setToggle}
           productId={selectedProduct}
+        />
+      }
+      {
+        showProduct && productData &&
+        <DoubleCard
+          SetshowProduct={setShowProduct}
+          productData={productData}
         />
       }
   </>)}

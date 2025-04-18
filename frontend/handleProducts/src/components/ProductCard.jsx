@@ -1,11 +1,15 @@
 import DeleteBtn from "./DeleteBtn"
 import EditBtn from "./EditBtn"
 
-const ProductCard = ({ name, image,toggle,setToggle, price, productId,getIdProduct}) => {
-
+const ProductCard = ({handleGetProduct,setShowProduct,name, image,toggle,setToggle, price, productId,getIdProduct}) => {
     
+   
     return (
-      <div className="group border-2 rounded-2xl overflow-hidden bg-black border-indigo-600/40 flex flex-col gap-3 transition-all hover:border-indigo-600 hover:shadow-lg hover:shadow-indigo-900/50 hover:-translate-y-2">
+      <div onClick={()=>{
+        handleGetProduct(productId);
+        setShowProduct(true);
+        }} className="group border-2 cursor-pointer rounded-2xl overflow-hidden bg-black border-indigo-600/40 flex flex-col gap-3 transition-all hover:border-indigo-600 hover:shadow-lg hover:shadow-indigo-900/50 hover:-translate-y-2">
+        
         <div className="relative overflow-hidden">
           <img 
             src={image} 

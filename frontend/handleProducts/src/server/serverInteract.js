@@ -16,6 +16,11 @@ const fetchProducts = async ()=>{
     const data = await res.json()
     return data.data;
 }
+const getProduct = async (productId)=>{
+    const res = await fetch(`/api/products/${productId}`);
+    const data = await res.json();
+    return data;
+}
 
 // delete product
 const deleteProduct = async (productId)=>{
@@ -43,5 +48,6 @@ export {
     createProduct,
     fetchProducts,
     deleteProduct,
-    updateProduct
+    updateProduct,
+    getProduct,
 }
