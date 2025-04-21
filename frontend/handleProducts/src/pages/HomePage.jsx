@@ -29,11 +29,10 @@ const HomePage = () => {
           products.length>0?
           <div className='p-2 grid max-lg:grid-cols-2 lg:grid-cols-4 gap-4'>
             {products.map((product,index)=><ProductCard 
-            setProductData={setProductData}
-            handleGetProduct={handleGetProduct}
             toggle={toggle}
-            showProduct={showProduct}
+            handleGetProduct={handleGetProduct}
             setShowProduct={setShowProduct}
+            showProduct={showProduct}
             setToggle={setToggle}
             key={index} 
             getIdProduct={getIdProduct}

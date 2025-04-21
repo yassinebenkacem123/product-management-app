@@ -23,7 +23,6 @@ const CreatedPage = () => {
     setRefresh(prev=>prev+1);
     setProductInfo({name:"",price:"",image:""});
   }
-  console.log(serverMessage.message)
   return (  
   <div className="w-full h-screen gap-4 flex flex-col mt-8 items-center">
     <h1 className="font-extrabold text-white text-3xl ">Create New Product</h1>
